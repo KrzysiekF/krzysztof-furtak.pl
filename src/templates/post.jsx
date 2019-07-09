@@ -70,7 +70,7 @@ Post.propTypes = {
   location: PropTypes.object.isRequired,
 }
 
-// The typenames come from the slice names
+// The typenames come from the slice names_
 // If this doesn't work' for you query for __typename in body {} and GraphiQL will show them to you
 
 export const pageQuery = graphql`
