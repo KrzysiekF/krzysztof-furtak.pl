@@ -30,21 +30,13 @@ module.exports = {
     'gatsby-plugin-react-helmet',
     'gatsby-plugin-emotion',
     {
-      resolve: 'gatsby-source-prismic-graphql',
+      resolve: 'gatsby-source-prismic',
       options: {
-        repositoryName: 'krzysztof-furtakpl', // (REQUIRED, replace with your own)
-        accessToken:
-          'MC5YU1ExTkJBQUFDQUE2RXhw.77-9YO-_vQlO77-977-9Eyvvv70-fu-_ve-_vVQI77-9Pw9j77-9Vm9LUn8MHzcW77-977-9', // (optional API access token)
-        path: '/preview', // (optional preview path. Default: /preview)
-        previews: true, // (optional, activated Previews. Default: false)
-        pages: [
-          {
-            type: 'Blog_post',
-            match: '/article/:uid',
-            path: '/article',
-            component: require.resolve('./src/templates/post.jsx'),
-          },
-        ],
+        repositoryName: 'krzysztof-furtak',
+        accessToken: `${process.env.API_KEY}`,
+        linkResolver: () => post => `/${post.uid}`,
+        htmlSerializer: () => prismicHtmlSerializer,
+        lang: '*',
       },
     },
     'gatsby-plugin-lodash',
