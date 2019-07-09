@@ -71,7 +71,7 @@ Post.propTypes = {
 }
 
 // The typenames come from the slice names
-// If this doesn't work for you query for __typename in body {} and GraphiQL will show them to you
+// If this doesn't work' for you query for __typename in body {} and GraphiQL will show them to you
 
 export const pageQuery = graphql`
   query PostBySlug($uid: String!) {
