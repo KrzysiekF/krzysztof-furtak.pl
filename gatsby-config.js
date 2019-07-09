@@ -30,16 +30,21 @@ module.exports = {
     'gatsby-plugin-react-helmet',
     'gatsby-plugin-emotion',
     {
-      resolve: 'gatsby-source-prismic',
+      resolve: 'gatsby-source-prismic-graphql',
       options: {
-        repositoryName: 'gatsby-starter-prismic',
-        accessToken: `${process.env.API_KEY}`,
-        // Get the correct URLs in blog posts
-        linkResolver: () => post => `/${post.uid}`,
-        // PrismJS highlighting for labels and slices
-        htmlSerializer: () => prismicHtmlSerializer,
-        // Remove this config option if you only have one language in your Prismic repository
-        lang: 'en-gb',
+        repositoryName: 'krzysztof-furtakpl', // (REQUIRED, replace with your own)
+        accessToken:
+          'MC5YU1ExTkJBQUFDQUE2RXhw.77-9YO-_vQlO77-977-9Eyvvv70-fu-_ve-_vVQI77-9Pw9j77-9Vm9LUn8MHzcW77-977-9', // (optional API access token)
+        path: '/preview', // (optional preview path. Default: /preview)
+        previews: true, // (optional, activated Previews. Default: false)
+        pages: [
+          {
+            type: 'Blog_post',
+            match: '/article/:uid',
+            path: '/article',
+            component: require.resolve('./src/templates/post.jsx'),
+          },
+        ],
       },
     },
     'gatsby-plugin-lodash',
