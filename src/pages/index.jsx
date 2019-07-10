@@ -1,35 +1,37 @@
-import React, { Component } from 'react'
-import PropTypes from 'prop-types'
-import styled from '@emotion/styled'
-import { graphql } from 'gatsby'
-import { Layout, Listing, Wrapper, Title } from '../components'
-import website from '../../config/website'
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import styled from '@emotion/styled';
+import { graphql } from 'gatsby';
+import { Layout, Listing, Wrapper, Title, NavBar } from '../components';
+import website from '../../config/website';
 
 const Hero = styled.header`
   background-color: ${props => props.theme.colors.greyLight};
   display: flex;
-  align-items: center;
-`
+  height: 100vh;
+  background-size: cover;
+  background-position: center;
+`;
 
 const HeroInner = styled(Wrapper)`
-  padding-top: 13rem;
-  padding-bottom: 13rem;
+  padding-top: 2rem;
+  text-align: center;
   h1 {
     margin-bottom: 2rem;
   }
   @media (max-width: ${props => props.theme.breakpoints.l}) {
-    padding-top: 10rem;
-    padding-bottom: 10rem;
+    padding-top: 2rem;
   }
   @media (max-width: ${props => props.theme.breakpoints.m}) {
-    padding-top: 8rem;
-    padding-bottom: 8rem;
+    padding-top: 3rem;
   }
   @media (max-width: ${props => props.theme.breakpoints.s}) {
-    padding-top: 6rem;
-    padding-bottom: 6rem;
+    padding-top: 2rem;
+    a {
+      margin-bottom: 1rem;
+    }
   }
-`
+`;
 
 const HeroText = styled.div`
   font-size: 1.7rem;
@@ -41,7 +43,20 @@ const HeroText = styled.div`
   @media (max-width: ${props => props.theme.breakpoints.s}) {
     font-size: 1.25rem;
   }
-`
+  a {
+    display: inline-block;
+    border: 4px solid ${props => props.theme.colors.primary};
+    font-size: 1.2rem;
+    margin: 0 2rem;
+    padding: 0.5rem 1.2rem;
+    background-color: #ffffff;
+    text-decoration: none;
+    :hover {
+      background-color: ${props => props.theme.colors.primary};
+      color: #ffffff;
+    }
+  }
+`;
 
 const Social = styled.ul`
   list-style-type: none;
@@ -73,7 +88,7 @@ const Social = styled.ul`
       }
     }
   }
-`
+`;
 
 const ProjectListing = styled.ul`
   list-style-type: none;
@@ -90,22 +105,31 @@ const ProjectListing = styled.ul`
       }
     }
   }
-`
+`;
 
-const IndexWrapper = Wrapper.withComponent('main')
+const IndexWrapper = Wrapper.withComponent('main');
 
 class Index extends Component {
   render() {
     const {
       data: { homepage, social, posts, projects },
-    } = this.props
+    } = this.props;
+    const heroImage = homepage.data.hero_image;
+    let heroImageSrc = null;
+
+    if (heroImage) {
+      heroImageSrc = heroImage.localFile.childImageSharp.fluid.src;
+    }
+
+    console.log('-> heroImageSrc: ', heroImageSrc);
+
     return (
       <Layout>
-        <Hero>
+        <Hero style={{ backgroundImage: `url(${heroImageSrc})` }}>
           <HeroInner>
             <h1>{homepage.data.title.text}</h1>
             <HeroText dangerouslySetInnerHTML={{ __html: homepage.data.content.html }} />
-            <Social>
+            <Social style={{ display: 'none' }}>
               {social.nodes.map((s, index) => (
                 <li data-name={`social-entry-${index}`} key={s.primary.label.text}>
                   <a href={s.primary.link.url}>{s.primary.label.text}</a>
@@ -114,6 +138,7 @@ class Index extends Component {
             </Social>
           </HeroInner>
         </Hero>
+        <NavBar />
         <IndexWrapper id={website.skipNavId} style={{ paddingTop: '2rem', paddingBottom: '2rem' }}>
           <Title style={{ marginTop: '4rem' }}>Recent posts</Title>
           <Listing posts={posts.nodes} />
@@ -127,11 +152,11 @@ class Index extends Component {
           </ProjectListing>
         </IndexWrapper>
       </Layout>
-    )
+    );
   }
 }
 
-export default Index
+export default Index;
 
 Index.propTypes = {
   data: PropTypes.shape({
@@ -142,6 +167,9 @@ Index.propTypes = {
         }),
         content: PropTypes.shape({
           html: PropTypes.string.isRequired,
+        }),
+        hero_image: PropTypes.shape({
+          localFile: PropTypes.object,
         }),
       }),
     }),
@@ -155,7 +183,7 @@ Index.propTypes = {
       nodes: PropTypes.array.isRequired,
     }),
   }).isRequired,
-}
+};
 
 export const pageQuery = graphql`
   query IndexQuery {
@@ -166,6 +194,15 @@ export const pageQuery = graphql`
         }
         content {
           html
+        }
+        hero_image {
+          localFile {
+            childImageSharp {
+              fluid(maxWidth: 1920, quality: 90) {
+                ...GatsbyImageSharpFluid_withWebp
+              }
+            }
+          }
         }
       }
     }
@@ -214,4 +251,4 @@ export const pageQuery = graphql`
       }
     }
   }
-`
+`;
