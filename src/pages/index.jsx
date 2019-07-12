@@ -17,7 +17,16 @@ const HeroInner = styled(Wrapper)`
   padding-top: 2rem;
   text-align: center;
   h1 {
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+    color: ${props => props.theme.colors.greyDark};
+  }
+  h3 {
+    font-size: 1.2rem;
+    font-family: Arial, sans-serif;
+    font-weight: 400;
+    margin: 0 0 2rem;
+    color: ${props => props.theme.colors.grey};
   }
   @media (max-width: ${props => props.theme.breakpoints.l}) {
     padding-top: 2rem;
@@ -45,12 +54,16 @@ const HeroText = styled.div`
   }
   a {
     display: inline-block;
-    border: 4px solid ${props => props.theme.colors.primary};
-    font-size: 1.2rem;
-    margin: 0 2rem;
-    padding: 0.5rem 1.2rem;
+    border: 2px solid ${props => props.theme.colors.primary};
+    font-size: 0.8rem;
+    font-family: Arial, sans-serif;
+    font-style: initial;
+    text-transform: uppercase;
+    margin: 0 1.5rem;
+    padding: 0.5rem 1.7rem;
     background-color: #ffffff;
     text-decoration: none;
+    box-shadow: 4px 4px 13px rgba(0, 0, 0, 0.2);
     :hover {
       background-color: ${props => props.theme.colors.primary};
       color: #ffffff;
@@ -121,13 +134,12 @@ class Index extends Component {
       heroImageSrc = heroImage.localFile.childImageSharp.fluid.src;
     }
 
-    console.log('-> heroImageSrc: ', heroImageSrc);
-
     return (
       <Layout>
         <Hero style={{ backgroundImage: `url(${heroImageSrc})` }}>
           <HeroInner>
             <h1>{homepage.data.title.text}</h1>
+            <h3>Front-End / JavaScript Developer</h3>
             <HeroText dangerouslySetInnerHTML={{ __html: homepage.data.content.html }} />
             <Social style={{ display: 'none' }}>
               {social.nodes.map((s, index) => (
@@ -140,9 +152,9 @@ class Index extends Component {
         </Hero>
         <NavBar />
         <IndexWrapper id={website.skipNavId} style={{ paddingTop: '2rem', paddingBottom: '2rem' }}>
-          <Title style={{ marginTop: '4rem' }}>Recent posts</Title>
+          <Title style={{ marginTop: '4rem' }}>Najnowsze artykuły</Title>
           <Listing posts={posts.nodes} />
-          <Title style={{ marginTop: '8rem' }}>Recent projects</Title>
+          <Title style={{ marginTop: '8rem' }}>Projekty</Title>
           <ProjectListing>
             {projects.nodes.map(project => (
               <li key={project.primary.label.text}>

@@ -7,6 +7,8 @@ const StyledFooter = styled.footer`
   margin: 6rem auto 0 auto;
   padding: 2rem;
   color: ${props => props.theme.colors.grey};
+  text-align: center;
+  font-size: 0.8rem;
 `;
 
 class Footer extends Component {

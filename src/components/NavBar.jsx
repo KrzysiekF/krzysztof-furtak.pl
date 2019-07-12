@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
 import { Link } from 'gatsby';
 import Wrapper from './Wrapper';
@@ -31,16 +32,37 @@ const NavBarStyled = styled.div`
   }
 `;
 
+const LogoStyled = styled.a`
+  text-transform: uppercase;
+  line-height: 1;
+  font-family: Arial, sans-serif;
+  font-style: initial;
+  color: ${props => props.theme.colors.greyDark};
+
+  :hover {
+    text-decoration: none;
+  }
+`;
+
 class NavBar extends Component {
   state = {
     stickNavBar: false,
   };
 
   componentDidMount() {
+    const { stick } = this.props;
+
+    if (stick) {
+      this.setState({ stickNavBar: true });
+      return;
+    }
+
     document.addEventListener('scroll', () => {
-      if (window.pageYOffset >= window.innerHeight && !this.state.stickNavBar) {
+      const { stickNavBar } = this.state;
+
+      if (window.pageYOffset >= window.innerHeight && !stickNavBar) {
         this.setState({ stickNavBar: true });
-      } else if (window.pageYOffset < window.innerHeight && this.state.stickNavBar) {
+      } else if (window.pageYOffset < window.innerHeight && stickNavBar) {
         this.setState({ stickNavBar: false });
       }
     });
@@ -53,7 +75,9 @@ class NavBar extends Component {
       <NavBarStyled className={`${stickNavBar ? 'stick' : ''}`}>
         <Wrapper>
           <div className="nav-bar">
-            <div>Krzysztof Furtak</div>
+            <div>
+              <LogoStyled href="/">Krzysztof Furtak</LogoStyled>
+            </div>
             <nav>
               <ul>
                 <li>
@@ -70,5 +94,13 @@ class NavBar extends Component {
     );
   }
 }
+
+NavBar.defaultProps = {
+  stick: false,
+};
+
+NavBar.propTypes = {
+  stick: PropTypes.bool,
+};
 
 export default NavBar;
