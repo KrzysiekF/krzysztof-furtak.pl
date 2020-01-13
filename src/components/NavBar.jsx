@@ -79,14 +79,14 @@ class NavBar extends Component {
               <LogoStyled href="/">Krzysztof Furtak</LogoStyled>
             </div>
             <nav>
-              <ul>
-                <li>
-                  <Link to="/">Home</Link>
-                </li>
-                <li>
-                  <Link to="/blog">Blog</Link>
-                </li>
-              </ul>
+              {/*<ul>*/}
+              {/*  <li>*/}
+              {/*    <Link to="/">Home</Link>*/}
+              {/*  </li>*/}
+              {/*  <li>*/}
+              {/*    <Link to="/blog">Blog</Link>*/}
+              {/*  </li>*/}
+              {/*</ul>*/}
             </nav>
           </div>
         </Wrapper>

@@ -139,30 +139,30 @@ class Index extends Component {
         <Hero style={{ backgroundImage: `url(${heroImageSrc})` }}>
           <HeroInner>
             <h1>{homepage.data.title.text}</h1>
-            <h3>Front-End / JavaScript Developer</h3>
-            <HeroText dangerouslySetInnerHTML={{ __html: homepage.data.content.html }} />
-            <Social style={{ display: 'none' }}>
-              {social.nodes.map((s, index) => (
-                <li data-name={`social-entry-${index}`} key={s.primary.label.text}>
-                  <a href={s.primary.link.url}>{s.primary.label.text}</a>
-                </li>
-              ))}
-            </Social>
+            <h3>Front-End / JavaScript Senior Developer</h3>
+            {/*<HeroText dangerouslySetInnerHTML={{ __html: homepage.data.content.html }} />*/}
+            {/*<Social style={{ display: 'none' }}>*/}
+            {/*  {social.nodes.map((s, index) => (*/}
+            {/*    <li data-name={`social-entry-${index}`} key={s.primary.label.text}>*/}
+            {/*      <a href={s.primary.link.url}>{s.primary.label.text}</a>*/}
+            {/*    </li>*/}
+            {/*  ))}*/}
+            {/*</Social>*/}
           </HeroInner>
         </Hero>
         <NavBar />
-        <IndexWrapper id={website.skipNavId} style={{ paddingTop: '2rem', paddingBottom: '2rem' }}>
-          <Title style={{ marginTop: '4rem' }}>Najnowsze artykuły</Title>
-          <Listing posts={posts.nodes} />
-          <Title style={{ marginTop: '8rem' }}>Projekty</Title>
-          <ProjectListing>
-            {projects.nodes.map(project => (
-              <li key={project.primary.label.text}>
-                <a href={project.primary.link.url}>{project.primary.label.text}</a>
-              </li>
-            ))}
-          </ProjectListing>
-        </IndexWrapper>
+        {/*<IndexWrapper id={website.skipNavId} style={{ paddingTop: '2rem', paddingBottom: '2rem' }}>*/}
+        {/*  <Title style={{ marginTop: '4rem' }}>Najnowsze artykuły</Title>*/}
+        {/*  <Listing posts={posts.nodes} />*/}
+        {/*  <Title style={{ marginTop: '8rem' }}>Projekty</Title>*/}
+        {/*  <ProjectListing>*/}
+        {/*    {projects.nodes.map(project => (*/}
+        {/*      <li key={project.primary.label.text}>*/}
+        {/*        <a href={project.primary.link.url}>{project.primary.label.text}</a>*/}
+        {/*      </li>*/}
+        {/*    ))}*/}
+        {/*  </ProjectListing>*/}
+        {/*</IndexWrapper>*/}
       </Layout>
     );
   }

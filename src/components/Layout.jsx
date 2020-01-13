@@ -79,7 +79,8 @@ const PureLayout = ({ children, data, customSEO }) => (
       {!customSEO && <SEO />}
       {children}
       <Footer>
-        <div dangerouslySetInnerHTML={{ __html: data.prismicHomepage.data.footer.html }} />
+        {/*<div dangerouslySetInnerHTML={{ __html: data.prismicHomepage.data.footer.html }} />*/}
+        <div>Krzysztof Furtak Ⓒ copyright 2020</div>
       </Footer>
     </>
   </ThemeProvider>
