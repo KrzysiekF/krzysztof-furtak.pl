@@ -1,10 +1,11 @@
 import * as React from "react"
 import { Link, graphql } from "gatsby"
 
-import Bio from "../components/bio"
 import Layout from "../components/layout"
 import Seo from "../components/seo"
-import Hero from "../components/Hero";
+import Hero from "../components/Hero"
+import TopBar from "../components/TopBar"
+import Bio from "../components/Bio"
 
 const BlogIndex = ({ data, location }) => {
   const siteTitle = data.site.siteMetadata?.title || `Title`
@@ -25,9 +26,11 @@ const BlogIndex = ({ data, location }) => {
 
   return (
     <Layout location={location} title={siteTitle}>
-        <Hero />
+      <TopBar />
+      <Hero />
       <Bio />
-      <ol style={{ listStyle: `none` }}>
+
+      <ol style={{ listStyle: `none` }} style={{ display: "none" }}>
         {posts.map(post => {
           const title = post.frontmatter.title || post.fields.slug
 
