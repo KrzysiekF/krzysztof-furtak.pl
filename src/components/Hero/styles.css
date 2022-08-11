@@ -1,0 +1,7 @@
+.hero  {
+    min-height: var(--height-hero);
+}
+
+.hero .container {
+    height: var(--height-hero);
+}
