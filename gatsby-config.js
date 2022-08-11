@@ -4,18 +4,19 @@ require("dotenv").config({
 
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Starter Blog`,
+    title: `Krzysztof Furtak`,
     author: {
-      name: `Kyle Mathews`,
-      summary: `who lives and works in San Francisco building useful things.`,
+      name: `Krzysztof Furtak`,
+      summary: `programista z wielką pasją do swojego zawodu.`,
     },
-    description: `A starter blog demonstrating what Gatsby can do.`,
-    siteUrl: `https://gatsbystarterblogsource.gatsbyjs.io/`,
+    description: `Strona osobista na której znajdziesz blog, informacje o mnie i moje projekty.`,
+    siteUrl: `https://krzysztof-furtak.pl/`,
     social: {
-      twitter: `kylemathews`,
+      twitter: ``,
     },
   },
   plugins: [
+    `gatsby-plugin-sitemap`,
     `gatsby-plugin-postcss`,
     `gatsby-plugin-image`,
     {
@@ -112,8 +113,8 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `Gatsby Starter Blog`,
-        short_name: `GatsbyJS`,
+        name: `Krzysztof Furtak`,
+        short_name: `Krzysztof Furtak`,
         start_url: `/`,
         background_color: `#ffffff`,
         // This will impact how browsers show your PWA/website

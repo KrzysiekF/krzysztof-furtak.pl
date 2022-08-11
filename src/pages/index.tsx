@@ -11,18 +11,18 @@ const BlogIndex = ({ data, location }) => {
   const siteTitle = data.site.siteMetadata?.title || `Title`
   const posts = data.allMarkdownRemark.nodes
 
-  if (posts.length === 0) {
-    return (
-      <Layout location={location} title={siteTitle}>
-        <Bio />
-        <p>
-          No blog posts found. Add markdown posts to "content/blog" (or the
-          directory you specified for the "gatsby-source-filesystem" plugin in
-          gatsby-config.js).
-        </p>
-      </Layout>
-    )
-  }
+  // if (posts.length === 0) {
+  //   return (
+  //     <Layout location={location} title={siteTitle}>
+  //       <Bio />
+  //       <p>
+  //         No blog posts found. Add markdown posts to "content/blog" (or the
+  //         directory you specified for the "gatsby-source-filesystem" plugin in
+  //         gatsby-config.js).
+  //       </p>
+  //     </Layout>
+  //   )
+  // }
 
   return (
     <Layout location={location} title={siteTitle}>

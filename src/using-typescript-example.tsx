@@ -2,8 +2,8 @@
 import * as React from "react"
 import { PageProps, Link, graphql, HeadFC } from "gatsby"
 
-import Layout from "../components/layout"
-import Seo from "../components/seo"
+import Layout from "./components/layout"
+import Seo from "./components/seo"
 
 type DataProps = {
   site: {
@@ -11,7 +11,7 @@ type DataProps = {
   }
 }
 
-const UsingTypescript: React.FC<PageProps<DataProps>> = ({
+const UsingTypescriptExample: React.FC<PageProps<DataProps>> = ({
   data,
   path,
   location,
@@ -44,7 +44,7 @@ const UsingTypescript: React.FC<PageProps<DataProps>> = ({
 
 export const Head: HeadFC<DataProps> = () => <Seo title="Using TypeScript" />
 
-export default UsingTypescript
+export default UsingTypescriptExample
 
 export const query = graphql`
   {
