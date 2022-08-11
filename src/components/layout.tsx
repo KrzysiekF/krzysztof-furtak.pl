@@ -24,7 +24,7 @@ const Layout = ({ location, title, children }) => {
     <div data-is-root-path={isRootPath}>
       {/*<header className="global-header">{header}</header>*/}
       <main>{children}</main>
-      <footer className="container">
+      <footer className="container text-sm opacity-80 text-center">
         © {new Date().getFullYear()}, Code with ❤️ by
         {` `}
         Krzysztof Furtak

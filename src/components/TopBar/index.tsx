@@ -19,17 +19,17 @@ const TopBar = () => {
                     Start
                   </a>
                 </li>
-                <li className="inline-block m-0 px-3">
+                <li className="inline-block m-0 px-3 hidden">
                   <a href="/" className="text-color-default hover:text-primary">
                     O Mnie
                   </a>
                 </li>
-                <li className="inline-block m-0 px-3">
+                <li className="inline-block m-0 px-3 hidden">
                   <a href="/" className="text-color-default hover:text-primary">
                     Dev Blog
                   </a>
                 </li>
-                <li className="inline-block m-0 px-3">
+                <li className="inline-block m-0 px-3 hidden">
                   <a href="/" className="text-color-default hover:text-primary">
                     Kontakt
                   </a>

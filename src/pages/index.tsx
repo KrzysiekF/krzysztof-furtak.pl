@@ -30,7 +30,7 @@ const BlogIndex = ({ data, location }) => {
       <Hero />
       <Bio />
 
-      <ol style={{ listStyle: `none` }} style={{ display: "none" }}>
+      <ol style={{ listStyle: `none`, display: "none" }}>
         {posts.map(post => {
           const title = post.frontmatter.title || post.fields.slug
 
