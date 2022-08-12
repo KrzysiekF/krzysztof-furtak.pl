@@ -2,7 +2,7 @@ import * as React from "react"
 
 const TopBar = () => {
   return (
-    <div className="absolute top-0 w-full">
+    <div className="absolute top-0 w-full z-10">
       <div className="container h-14">
         <div className="grid grid-cols-2 items-stretch h-full">
           <div className="flex-auto self-center">
@@ -19,8 +19,11 @@ const TopBar = () => {
                     Start
                   </a>
                 </li>
-                <li className="inline-block m-0 px-3 hidden">
-                  <a href="/" className="text-color-default hover:text-primary">
+                <li className="inline-block m-0 px-3">
+                  <a
+                    href="/o-mnie"
+                    className="text-color-default hover:text-primary"
+                  >
                     O Mnie
                   </a>
                 </li>
